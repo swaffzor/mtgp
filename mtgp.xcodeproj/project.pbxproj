@@ -10,7 +10,7 @@
 		85FAA98EEE7DB9EF1816C49E /* libPods-mtgp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 747B01D22014203BFC0B09D4 /* libPods-mtgp.a */; };
 		AFF2A41C26A49DD3001B4BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41B26A49DD3001B4BC1 /* AppDelegate.swift */; };
 		AFF2A41E26A49DD3001B4BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41D26A49DD3001B4BC1 /* SceneDelegate.swift */; };
-		AFF2A42026A49DD3001B4BC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41F26A49DD3001B4BC1 /* ViewController.swift */; };
+		AFF2A42026A49DD3001B4BC1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41F26A49DD3001B4BC1 /* MainVC.swift */; };
 		AFF2A42326A49DD3001B4BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF2A42126A49DD3001B4BC1 /* Main.storyboard */; };
 		AFF2A42626A49DD3001B4BC1 /* mtgp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A42426A49DD3001B4BC1 /* mtgp.xcdatamodeld */; };
 		AFF2A42826A49DD7001B4BC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF2A42726A49DD7001B4BC1 /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 		AFF2A41826A49DD3001B4BC1 /* mtgp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtgp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF2A41B26A49DD3001B4BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF2A41D26A49DD3001B4BC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AFF2A41F26A49DD3001B4BC1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AFF2A41F26A49DD3001B4BC1 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		AFF2A42226A49DD3001B4BC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFF2A42526A49DD3001B4BC1 /* mtgp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mtgp.xcdatamodel; sourceTree = "<group>"; };
 		AFF2A42726A49DD7001B4BC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			children = (
 				AFF2A41B26A49DD3001B4BC1 /* AppDelegate.swift */,
 				AFF2A41D26A49DD3001B4BC1 /* SceneDelegate.swift */,
-				AFF2A41F26A49DD3001B4BC1 /* ViewController.swift */,
+				AFF2A41F26A49DD3001B4BC1 /* MainVC.swift */,
 				AFF2A42126A49DD3001B4BC1 /* Main.storyboard */,
 				AFF2A42726A49DD7001B4BC1 /* Assets.xcassets */,
 				AFF2A42926A49DD7001B4BC1 /* LaunchScreen.storyboard */,
@@ -91,7 +91,6 @@
 				56A40BD8F1D4954B996D51D9 /* Pods-mtgp.debug.xcconfig */,
 				77BA65D9F94A4D863AF57987 /* Pods-mtgp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -191,7 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF2A42026A49DD3001B4BC1 /* ViewController.swift in Sources */,
+				AFF2A42026A49DD3001B4BC1 /* MainVC.swift in Sources */,
 				AFF2A42626A49DD3001B4BC1 /* mtgp.xcdatamodeld in Sources */,
 				AFF2A41C26A49DD3001B4BC1 /* AppDelegate.swift in Sources */,
 				AFF2A41E26A49DD3001B4BC1 /* SceneDelegate.swift in Sources */,
