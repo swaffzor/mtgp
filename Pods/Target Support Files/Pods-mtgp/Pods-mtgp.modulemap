@@ -1,0 +1,6 @@
+module Pods_mtgp {
+  umbrella header "Pods-mtgp-umbrella.h"
+
+  export *
+  module * { export * }
+}

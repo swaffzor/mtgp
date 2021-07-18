@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85FAA98EEE7DB9EF1816C49E /* libPods-mtgp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 747B01D22014203BFC0B09D4 /* libPods-mtgp.a */; };
 		AFF2A41C26A49DD3001B4BC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41B26A49DD3001B4BC1 /* AppDelegate.swift */; };
 		AFF2A41E26A49DD3001B4BC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41D26A49DD3001B4BC1 /* SceneDelegate.swift */; };
 		AFF2A42026A49DD3001B4BC1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF2A41F26A49DD3001B4BC1 /* ViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56A40BD8F1D4954B996D51D9 /* Pods-mtgp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mtgp.debug.xcconfig"; path = "Target Support Files/Pods-mtgp/Pods-mtgp.debug.xcconfig"; sourceTree = "<group>"; };
+		747B01D22014203BFC0B09D4 /* libPods-mtgp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mtgp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77BA65D9F94A4D863AF57987 /* Pods-mtgp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mtgp.release.xcconfig"; path = "Target Support Files/Pods-mtgp/Pods-mtgp.release.xcconfig"; sourceTree = "<group>"; };
 		AFF2A41826A49DD3001B4BC1 /* mtgp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtgp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF2A41B26A49DD3001B4BC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFF2A41D26A49DD3001B4BC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85FAA98EEE7DB9EF1816C49E /* libPods-mtgp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38653516B91D670058E98711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				747B01D22014203BFC0B09D4 /* libPods-mtgp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFF2A40F26A49DD3001B4BC1 = {
 			isa = PBXGroup;
 			children = (
 				AFF2A41A26A49DD3001B4BC1 /* mtgp */,
 				AFF2A41926A49DD3001B4BC1 /* Products */,
+				BB4F0A4D3123352E6BC82DDB /* Pods */,
+				38653516B91D670058E98711 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +85,16 @@
 			path = mtgp;
 			sourceTree = "<group>";
 		};
+		BB4F0A4D3123352E6BC82DDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56A40BD8F1D4954B996D51D9 /* Pods-mtgp.debug.xcconfig */,
+				77BA65D9F94A4D863AF57987 /* Pods-mtgp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +102,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFF2A42F26A49DD7001B4BC1 /* Build configuration list for PBXNativeTarget "mtgp" */;
 			buildPhases = (
+				0522ACA6767596BDB5A3939E /* [CP] Check Pods Manifest.lock */,
 				AFF2A41426A49DD3001B4BC1 /* Sources */,
 				AFF2A41526A49DD3001B4BC1 /* Frameworks */,
 				AFF2A41626A49DD3001B4BC1 /* Resources */,
@@ -134,6 +160,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0522ACA6767596BDB5A3939E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mtgp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AFF2A41426A49DD3001B4BC1 /* Sources */ = {
@@ -287,6 +338,7 @@
 		};
 		AFF2A43026A49DD7001B4BC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56A40BD8F1D4954B996D51D9 /* Pods-mtgp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +358,7 @@
 		};
 		AFF2A43126A49DD7001B4BC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77BA65D9F94A4D863AF57987 /* Pods-mtgp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
