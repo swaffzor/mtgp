@@ -8,23 +8,29 @@
 import UIKit
 import MTGSDKSwift
 
-class MainVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class MainVC: UIViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("updating...")
+    }
+    
     let magic = Magic()
+    let searchController = UISearchController()
     var searchActive = false
     var searchResults: [String] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tvSearch: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        
         magic.fetchPageTotal = "1"
         magic.fetchPageSize = "100"
         
         searchBar.delegate = self
-        tvSearch.delegate = self
-        tvSearch.dataSource = self
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -34,9 +40,9 @@ class MainVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
             self.searchResults = cards?.map{ (card) -> String in
                 card.name ?? ""
             } ?? [""]
-            DispatchQueue.main.async {
-                self.tvSearch.reloadData()
-            }
+//            DispatchQueue.main.async {
+//                self.tvSearch.reloadData()
+//            }
             
             for c in cards! {
                 print(c.name)
@@ -54,18 +60,5 @@ class MainVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
         searchActive = true
         searchBar.resignFirstResponder()
 //        print("search button clicked")
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        searchResults.count > 0 ? 1 : 0
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchResults.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") ?? UITableViewCell()
-        cell.textLabel?.text = searchResults[indexPath.row]
-        
-        return cell
     }
 }
