@@ -8,9 +8,13 @@
 import UIKit
 import MTGSDKSwift
 
-class MainVC: UIViewController, UISearchBarDelegate {
+class MainVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     let magic = Magic()
+    var searchActive = false
+    var searchResults: [String] = []
+    
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tvSearch: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,31 +23,49 @@ class MainVC: UIViewController, UISearchBarDelegate {
         magic.fetchPageSize = "100"
         
         searchBar.delegate = self
-        
-        let color = CardSearchParameter(parameterType: .colors, value: "green")
-//        let cmc = CardSearchParameter(parameterType: .cmc, value: "2")
-//        let setCode = CardSearchParameter(parameterType: .set, value: "AER")
-        let name = CardSearchParameter(parameterType: .name, value: "elder g")
-        magic.fetchCards([color, name]) {cards, error in
-            if let error = error {
-                //handle your error
-            }
-
-            for c in cards! {
-                print(c.name)
-            }
-
-        }
-
+        tvSearch.delegate = self
+        tvSearch.dataSource = self
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("text changed")
-        print(searchText)
+        let name = CardSearchParameter(parameterType: .name, value: searchText)
+        guard searchActive == true else {return}
+        magic.fetchCards([name]) {cards, error in
+            self.searchResults = cards?.map{ (card) -> String in
+                card.name ?? ""
+            } ?? [""]
+            DispatchQueue.main.async {
+                self.tvSearch.reloadData()
+            }
+            
+            for c in cards! {
+                print(c.name)
+            }
+        }
+        
     }
-    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("search button clicketd")
+        searchActive = true
+        searchBar.resignFirstResponder()
+//        print("search button clicked")
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        searchResults.count > 0 ? 1 : 0
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchResults.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") ?? UITableViewCell()
+        cell.textLabel?.text = searchResults[indexPath.row]
+        
+        return cell
     }
 }
-
